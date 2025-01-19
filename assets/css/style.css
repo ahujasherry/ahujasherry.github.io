@@ -2,6 +2,9 @@
   #style.css
 \*-----------------------------------*/
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /**
  * copyright 2022 @codewithsadee

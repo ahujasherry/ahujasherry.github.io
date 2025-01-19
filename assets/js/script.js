@@ -78,23 +78,42 @@ for (let i = 0; i < selectItems.length; i++) {
 // filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
-const filterFunc = function (selectedValue) {
+// const filterFunc = function (selectedValue) {
 
-  for (let i = 0; i < filterItems.length; i++) {
+//   for (let i = 0; i < filterItems.length; i++) {
 
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
+//     if (selectedValue === "all") {
+//       filterItems[i].classList.add("active");
+//     } else if (selectedValue === filterItems[i].dataset.category) {
+//       filterItems[i].classList.add("active");
+//     } else {
+//       filterItems[i].classList.remove("active");
+//     }
 
-  }
+//   }
 
-}
+// }
 
 // add event in all filter button items for large screen
+
+const filterFunc = function (selectedValue) {
+  for (let i = 0; i < filterItems.length; i++) {
+    // Remove active from all items and hide them by default
+    filterItems[i].classList.remove("active");
+    filterItems[i].style.display = "none"; // Explicitly hide the item
+  }
+
+  for (let i = 0; i < filterItems.length; i++) {
+    // Add active and make visible only the matching items
+    if (selectedValue === "all" || selectedValue === filterItems[i].dataset.category) {
+      filterItems[i].classList.add("active");
+      filterItems[i].style.display = ""; // Restore display for matching items
+    }
+  }
+};
+
+
+
 let lastClickedBtn = filterBtn[0];
 
 for (let i = 0; i < filterBtn.length; i++) {
